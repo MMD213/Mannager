@@ -10,6 +10,7 @@ public class Main {
         ArrayList<Manager> managers = new ArrayList<>();
         ArrayList<Zadacha> zadachas = new ArrayList<>();
         String comanda = "";
+        String status="";
         int IDMAN = 0;
         int IDZadach=0;
         int IDM = 0;
@@ -32,13 +33,14 @@ public class Main {
             if (comanda.equals("Добавить задачу")){
                 naim = scanner.nextLine();
                 comment=scanner.nextLine();
+                status=scanner.nextLine();
                 FIO=scanner.nextLine();
                 for(int i=0;i< managers.size();i++){
                     if(managers.get(i).FIO.equals(FIO)){
                         IDM=managers.get(i).ID;
                     }
                 }
-                Zadacha zadacha = new Zadacha(naim,comment,IDZadach,IDM);
+                Zadacha zadacha = new Zadacha(naim,comment,status,IDZadach,IDM);
                 zadachas.add(zadacha);
                 IDZadach++;
                 for(int i=0;i< zadachas.size();i++){
@@ -47,7 +49,7 @@ public class Main {
                             IDM=managers.get(j).ID;
                         }
                     }
-                    System.out.println("ID: "+zadachas.get(i).ID+"; Наименование: "+zadachas.get(i).naim+"; Комментарий: "+zadachas.get(i).comment+"; Ответственный: " +FIO+".");
+                    System.out.println("ID: "+zadachas.get(i).ID+"; Наименование: "+zadachas.get(i).naim+"; Комментарий: "+zadachas.get(i).comment+"; Ответственный: " +FIO+"; Статус: "+zadachas.get(i).status);
                 }
             }
             if(comanda.equals("Переназначить исполнителя задачи")){
